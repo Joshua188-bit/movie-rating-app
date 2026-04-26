@@ -1,0 +1,48 @@
+/*.roboto-<uniquifier> {
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+}
+  */
+header {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 3rem;
+}
+
+header h1 {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #fff;
+  font-weight: 800;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.nav-bars {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.nav-bars a {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-bars a:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.nav-bars input[type="text"] {
+  width: 15rem;
+  height: 2rem;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  padding-left: 5px ;
+}
