@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="src/reset.css">
     <link rel="stylesheet" href="src/style.css">
     <!--Link js-->
-    <script src="src/config.js"></script>
+    <script src="/src/consig.js"></script>
     <script defer src="src/main.js"></script>
 </head>
 
@@ -30,8 +30,11 @@
             <a href="#">Watchlist</a>
             <a href="#">My Ratings</a>
             <a href="#">Favourites</a>
-            <input type="text" placeholder="Search...">
-            <button class="search-button">Search</button>
+            
+            <div class="search-group">
+                <input type="text" placeholder="Search...">
+                <button class="search-button">Search</button>
+            </div>
         </div>
     </header>
 
@@ -39,6 +42,7 @@
 
         <section class="hero-section">
             <h2>Popular Movies</h2>
+            <div id="popular-movies"></div>
         </section>
 
         <section id="search-results" class="movie-grid">
