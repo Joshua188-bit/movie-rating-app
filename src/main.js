@@ -13,7 +13,7 @@ async function loadPopularMovies() {
     data.results.forEach(movie => {
       const { title, poster_path, vote_average, overview } = movie;
       container.innerHTML += `
-      div class= <"movie-card">
+      <div class= <"movie-card">
       <img src = "https://image.tmdb.org/t/p/w500${poster_path}">
       <h3>${title}</h3>
       <p>${overview}</p>
