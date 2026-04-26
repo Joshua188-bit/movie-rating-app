@@ -46,3 +46,17 @@ header h1 {
   font-size: 1.5rem;
   padding-left: 5px ;
 }
+
+.main-section {
+  background-color: grey;
+}
+
+.hero-section h2 {
+  margin: 0;
+  padding-top: 1rem;
+  font-family: "Roboto Condensed", sans-serif;
+  padding-left: 2rem;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #fff;
+}

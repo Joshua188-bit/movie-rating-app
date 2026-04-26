@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="src/reset.css">
     <link rel="stylesheet" href="src/style.css">
     <!--Link js-->
+    <script src="src/config.js"></script>
     <script defer src="src/main.js"></script>
 </head>
 
@@ -30,8 +31,23 @@
             <a href="#">My Ratings</a>
             <a href="#">Favourites</a>
             <input type="text" placeholder="Search...">
+            <button class="search-button">Search</button>
         </div>
     </header>
+
+    <main class="main-section">
+
+        <section class="hero-section">
+            <h2>Popular Movies</h2>
+        </section>
+
+        <section id="search-results" class="movie-grid">
+        </section>
+
+        <section id="watchlist" class="movie-grid">
+        </section>
+
+    </main>
 </body>
 
 </html>
