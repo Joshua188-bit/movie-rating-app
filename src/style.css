@@ -72,3 +72,20 @@ header h1 {
   align-items: center;
   gap: 0.3rem;
 }
+
+.movie-card {
+  width: 150px;
+}
+
+.poster {
+  width: 100%;
+  display: block;
+}
+
+#popular-movies {
+  display: grid;
+  margin-top: 1rem;
+  justify-content: center;
+  grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr;
+  gap: 2rem;
+}

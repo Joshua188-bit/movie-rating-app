@@ -14,7 +14,7 @@ async function loadPopularMovies() {
       const { title, poster_path, vote_average, overview } = movie;
       container.innerHTML += `
       <div class= <"movie-card">
-      <img src = "https://image.tmdb.org/t/p/w500${poster_path}">
+      <img class="poster" src = "https://image.tmdb.org/t/p/w500${poster_path}">
       <h3>${title}</h3>
       <p>${overview}</p>
       <p>${vote_average}</p>
