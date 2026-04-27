@@ -48,17 +48,17 @@ header h1 {
 }
 
 .main-section {
-  background-color: grey;
+  background-color: #fff;
 }
 
 .hero-section h2 {
   margin: 0;
   padding-top: 1rem;
   font-family: "Roboto Condensed", sans-serif;
-  padding-left: 2rem;
+  padding-left: 3.3rem;
   font-weight: 700;
   font-size: 2rem;
-  color: #fff;
+  color: black;
 }
 
 .search-button {
