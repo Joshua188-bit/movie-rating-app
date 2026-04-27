@@ -11,13 +11,16 @@ async function loadPopularMovies() {
     const data = await response.json();
 
     data.results.forEach(movie => {
-      const { title, poster_path, vote_average, overview } = movie;
+      const { title, poster_path, vote_average, overview, release_date } = movie;
       container.innerHTML += `
-      <div class= <"movie-card">
+      <div class= "movie-card">
       <img class="poster" src = "https://image.tmdb.org/t/p/w500${poster_path}">
+      <div class = "hover-card">
       <h3>${title}</h3>
       <p>${overview}</p>
       <p>${vote_average}</p>
+      <p>${release_date}</p>
+       </div>
       </div>`
     });
   } catch (error) {

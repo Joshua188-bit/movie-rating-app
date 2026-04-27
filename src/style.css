@@ -74,12 +74,30 @@ header h1 {
 }
 
 .movie-card {
-  width: 150px;
+  width: 240px;
+  position: relative;
 }
 
 .poster {
   width: 100%;
   display: block;
+  border-radius: 12px;
+}
+
+.hover-card{
+ position:absolute;
+ bottom:0;
+ left:0;
+ width:100%;
+ padding:1rem;
+ color: white;
+ opacity:0;
+ transition:.3s;
+ background-color: black;
+}
+
+.movie-card:hover .hover-card{
+ opacity:1;
 }
 
 #popular-movies {
