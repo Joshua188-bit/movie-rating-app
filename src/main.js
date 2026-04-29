@@ -1,6 +1,14 @@
 let currentPage = 1;
 window.addEventListener("DOMContentLoaded", loadPopularMovies);
 
+function formatDate(dateString) {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
 async function loadPopularMovies() {
   const container = document.getElementById("popular-movies");
 
@@ -21,7 +29,7 @@ async function loadPopularMovies() {
       <div class = "hover-card">
       <h3>${title}</h3>
       <p>${vote_average}</p>
-      <p>${release_date}</p>
+      <p>${formatDate(release_date)}</p>
        </div>
       </div>`
       container.appendChild(card);
