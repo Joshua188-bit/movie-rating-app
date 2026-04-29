@@ -29,7 +29,9 @@ async function loadPopularMovies() {
       <div class = "hover-card">
       <h3>${title}</h3>
       <p>${vote_average}</p>
+      <p>${overview}</p>
       <p>${formatDate(release_date)}</p>
+      <a href="#">See More</a>
        </div>
       </div>`
       container.appendChild(card);

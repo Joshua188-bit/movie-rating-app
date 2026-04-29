@@ -100,12 +100,26 @@ header span {
   border-radius: 13px;
   opacity: 0;
   transition: .5s ease;
-  transform: scaleY(1);
   background-color: black;
 }
 
 .movie-card:hover .hover-card {
   opacity: 1;
+}
+
+.movie-card a {
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.movie-card a:hover {
+  color: grey;
+  text-decoration: underline;
 }
 
 #popular-movies {
