@@ -19,6 +19,10 @@ header h1 {
   margin: 0;
 }
 
+header span {
+  color: red;
+}
+
 .nav-bars {
   display: flex;
   align-items: center;
@@ -74,30 +78,34 @@ header h1 {
 }
 
 .movie-card {
-  width: 240px;
+  width: 250px;
   position: relative;
 }
 
 .poster {
   width: 100%;
+  height: 100%;
   display: block;
+  cursor: pointer;
   border-radius: 12px;
 }
 
-.hover-card{
- position:absolute;
- bottom:0;
- left:0;
- width:100%;
- padding:1rem;
- color: white;
- opacity:0;
- transition:.3s;
- background-color: black;
+.hover-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  color: white;
+  border-radius: 13px;
+  opacity: 0;
+  transition: .5s ease;
+  transform: scaleY(1);
+  background-color: black;
 }
 
-.movie-card:hover .hover-card{
- opacity:1;
+.movie-card:hover .hover-card {
+  opacity: 1;
 }
 
 #popular-movies {
@@ -106,4 +114,22 @@ header h1 {
   justify-content: center;
   grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr;
   gap: 2rem;
+}
+
+.load-more-btn {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 2.5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.load-more-btn:hover {
+  background-color: darkred;
 }

@@ -23,35 +23,38 @@
 </head>
 
 <body>
-    <header class="header-section">
-        <h1>CineTrack</h1>
+    <div class="container">
+        <header class="header-section">
+            <h1>Cine<span>Track</span></h1>
 
-        <div class="nav-bars">
-            <a href="#">Watchlist</a>
-            <a href="#">My Ratings</a>
-            <a href="#">Favourites</a>
-            
-            <div class="search-group">
-                <input type="text" placeholder="Search...">
-                <button class="search-button">Search</button>
+            <div class="nav-bars">
+                <a href="#">Watchlist</a>
+                <a href="#">My Ratings</a>
+                <a href="#">Favourites</a>
+
+                <div class="search-group">
+                    <input type="text" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="main-section">
+        <main class="main-section">
 
-        <section class="hero-section">
-            <h2>Popular Movies</h2>
-            <div id="popular-movies"></div>
-        </section>
+            <section class="hero-section">
+                <h2>Popular Movies</h2>
+                <div id="popular-movies"></div>
+                <button class="load-more-btn" onclick="loadMore()">Load More</button>
+            </section>
 
-        <section id="search-results" class="movie-grid">
-        </section>
+            <section id="search-results" class="movie-grid">
+            </section>
 
-        <section id="watchlist" class="movie-grid">
-        </section>
+            <section id="watchlist" class="movie-grid">
+            </section>
 
-    </main>
+        </main>
+    </div>
 </body>
 
 </html>
