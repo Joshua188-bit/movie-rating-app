@@ -30,10 +30,11 @@ async function loadPopularMovies() {
     <p class="description">${overview}</p>
     <p>${vote_average}</p>
     <p>${formatDate(release_date)}</p>
+    <a class="see-more-link" href="#">See More</a>
   </div>
 `;
 
-      card.addEventListener('click', () => {
+      card.querySelector(".see-more-link").addEventListener('click', () => {
         localStorage.setItem('selectedMovieId', movie.id);
         window.location.href = '/front-end/pages/see-more.html';
       });

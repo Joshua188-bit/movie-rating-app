@@ -10,12 +10,18 @@ async function getMovieDetails(id) {
         }
 
         const data = await response.json();
+        
+        const genres = data.genres.map(genre => `
+        <span class="badge">${genre.name}</span>
+        `).join('');
 
+        const {title, overview, poster_path} = data;
         seeMoreBtn.innerHTML = `
     <div class="movie-details">
-        <h1>${data.title}</h1>
-        <img class="detail-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}">
-        <p>${data.overview}</p>
+        <img class="detail-poster" src="https://image.tmdb.org/t/p/w500${poster_path}">
+        <div class="genres">${genres}</div>
+        <h1>${title}</h1>
+        <p>${overview}</p>
     </div>
         `;
 
