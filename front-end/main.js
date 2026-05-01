@@ -23,17 +23,20 @@ async function loadPopularMovies() {
       const { title, poster_path, vote_average, overview, release_date } = movie;
       const card = document.createElement('div');
       card.className = 'movie-card';
-      card.innerHTML += `
-      <div class= "movie-card">
-      <img class="poster" src = "https://image.tmdb.org/t/p/w500${poster_path}">
-      <div class = "hover-card">
-      <h3>${title}</h3>
-      <p>${vote_average}</p>
-      <p>${overview}</p>
-      <p>${formatDate(release_date)}</p>
-      <a href="#">See More</a>
-       </div>
-      </div>`
+      card.innerHTML = `
+  <img class="poster" src="https://image.tmdb.org/t/p/w500${poster_path}">
+  <div class="hover-card">
+    <h3>${title}</h3>
+    <p class="description">${overview}</p>
+    <p>${vote_average}</p>
+    <p>${formatDate(release_date)}</p>
+  </div>
+`;
+
+      card.addEventListener('click', () => {
+        localStorage.setItem('selectedMovieId', movie.id);
+        window.location.href = '/front-end/pages/see-more.html';
+      });
       container.appendChild(card);
     });
   } catch (error) {
@@ -45,3 +48,4 @@ function loadMore() {
   currentPage++;
   loadPopularMovies();
 }
+

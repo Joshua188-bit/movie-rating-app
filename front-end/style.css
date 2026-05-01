@@ -3,6 +3,8 @@
   font-family: "Roboto Condensed", sans-serif;
 }
   */
+
+
 header {
   background-color: black;
   display: flex;
@@ -146,4 +148,15 @@ header span {
 
 .load-more-btn:hover {
   background-color: darkred;
+}
+
+.header-section a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.description {
+  font-family: "Roboto", sans-serif;
+  font-size: .8rem;
+  font-weight: 700;
 }
