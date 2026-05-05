@@ -6,7 +6,7 @@
 
 
 header {
-  background-color: black;
+  background-color: #1a1a1a;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -159,4 +159,46 @@ header span {
   font-family: "Roboto", sans-serif;
   font-size: .8rem;
   font-weight: 700;
+}
+
+.movie-details {
+  background-color: #0f0f0f;
+  color: #fff;
+  display: flex;
+}
+
+.detail-poster {
+  margin-top: 2rem;
+  margin-left: 3rem;
+  border-radius: 1rem;
+  width: 360px;
+}
+
+.movie-description {
+  display: flex;
+  flex-direction: column;
+  margin-top:4rem;
+  margin-left: 2rem;
+}
+
+.overview-text {
+  margin-top: 2rem;
+  margin-right: 1rem;
+}
+
+.genres {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: "Roboto", sans-serif;
 }

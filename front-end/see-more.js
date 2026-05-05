@@ -15,13 +15,15 @@ async function getMovieDetails(id) {
         <span class="badge">${genre.name}</span>
         `).join('');
 
-        const {title, overview, poster_path} = data;
+        const {title, overview, poster_path, vote_average, runtime, release_date, original_language, revenue, budget} = data;
         seeMoreBtn.innerHTML = `
     <div class="movie-details">
         <img class="detail-poster" src="https://image.tmdb.org/t/p/w500${poster_path}">
+        <div class="movie-description">
         <div class="genres">${genres}</div>
         <h1>${title}</h1>
-        <p>${overview}</p>
+        <p class="overview-text">${overview}</p>
+        </div>
     </div>
         `;
 
