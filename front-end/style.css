@@ -13,7 +13,7 @@ header {
   padding: 1rem 3rem;
 }
 
-header h1 {
+header h1 a{
   font-family: "Roboto Condensed", sans-serif;
   color: #fff;
   font-weight: 800;
@@ -164,7 +164,7 @@ header span {
 .movie-details {
   background-color: #0f0f0f;
   color: #fff;
-  display: flex;
+  height: 620px;
 }
 
 .detail-poster {
@@ -172,6 +172,10 @@ header span {
   margin-left: 3rem;
   border-radius: 1rem;
   width: 360px;
+}
+
+.movie-items {
+  display: flex;
 }
 
 .movie-description {
@@ -184,6 +188,7 @@ header span {
 .overview-text {
   margin-top: 2rem;
   margin-right: 1rem;
+  width: 820px;
 }
 
 .genres {
@@ -201,4 +206,59 @@ header span {
   padding: 4px 12px;
   border-radius: 20px;
   font-family: "Roboto", sans-serif;
+}
+
+.movie-description h1 {
+  font-family: "Roboto", sans-serif;
+}
+
+.details-part {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+  margin-top: 1rem;
+  
+}
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.detail-label {
+  font-size: 18px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 14px;
+  color: #fff;
+}
+
+.stat-boxes {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.stat-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: center;
+  min-width: 100px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
 }
