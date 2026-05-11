@@ -9,23 +9,23 @@ function formatDate(dateString) {
 }
 
 async function getMovieDetails(id) {
-    try {
-        const response = await fetch(
-            `${API_URL}/movie/${id}?api_key=${API_KEY}`
-        );
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-        }
+  try {
+    const response = await fetch(
+      `${API_URL}/movie/${id}?api_key=${API_KEY}`
+    );
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
 
-        const data = await response.json();
+    const data = await response.json();
 
-        const genres = data.genres.map(genre => `
+    const genres = data.genres.map(genre => `
         <span class="badge">${genre.name}</span>
         `).join('');
-        const language = data.spoken_languages.map(spoken_languages => `
+    const language = data.spoken_languages.map(spoken_languages => `
             <p>${spoken_languages.name}</p>
         `).join('');
-        const { title, overview, poster_path, vote_average, runtime, release_date, original_language, revenue, budget, status, } = data;
+    const { title, overview, poster_path, vote_average, runtime, release_date, original_language, revenue, budget, status, } = data;
     seeMoreBtn.innerHTML = `
       <div class="movie-details">
         <div class="movie-items">
@@ -68,7 +68,7 @@ async function getMovieDetails(id) {
                   <p class="detail-value">$${revenue.toLocaleString()}</p>
                 </div>
                 <div class="saving-buttons">
-                  <button class="Save-btn">
+                  <button class="Save-btn" onclick="window.location.href='/front-end/pages/watch-list.html'">
                     Add To Watchlist
                   </button>
                   <button class="favourites-btn" onclick="window.location.href='/front-end/pages/Favourites.html'">
@@ -82,12 +82,34 @@ async function getMovieDetails(id) {
       </div>
     `;
 
+    const saveBtn = document.querySelector(".Save-btn");
 
-    } catch (error) {
+    saveBtn.addEventListener('click', async () => {
+      try {
+        const response = await fetch('http://localhost:3000/watchlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ movieId: id })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+      }
+      catch (error) {
         console.error(error);
-    }
+      }
+    })
+
+
+  } catch (error) {
+    console.error(error);
+  }
 
 }
+
 
 const movieId = localStorage.getItem('selectedMovieId');
 getMovieDetails(movieId);
