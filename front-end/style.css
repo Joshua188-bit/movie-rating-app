@@ -164,7 +164,7 @@ header span {
 .movie-details {
   background-color: #0f0f0f;
   color: #fff;
-  height: 620px;
+  min-height: 620px;
 }
 
 .detail-poster {
@@ -307,3 +307,46 @@ header span {
     margin: 0;
     overflow: hidden;
 }
+
+.saving-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.Save-btn, .favourites-btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.Save-btn {
+    background-color: white;
+    color: black;
+}
+
+.Save-btn:hover {
+    background-color: #ddd;
+}
+
+.favourites-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.favourites-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.detail-poster {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
