@@ -11,4 +11,4 @@ const pool = new pg.Pool({
     port: process.env.DB_PORT,
 });
 
-export default Pool;
+export default pool;

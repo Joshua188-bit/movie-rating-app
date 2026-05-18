@@ -11,6 +11,7 @@ function formatDate(dateString) {
 
 async function loadPopularMovies() {
   const container = document.getElementById("popular-movies");
+  
 
   try {
     const response = await fetch(

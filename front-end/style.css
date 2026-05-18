@@ -263,3 +263,47 @@ header span {
   color: #fff;
 }
 
+.watchlist h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+  color: #0f0f0f;
+}
+
+.watchlist-result {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+}
+
+.movieoverview-card {
+    display: flex;
+    gap: 16px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 12px 16px;
+}
+
+.movieoverview-card img {
+    width: 120px;
+    height: 200px;
+    border-radius: 6px;
+}
+
+
+.movie-description p:first-child {
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+}
+
+.movie-description p:last-child {
+    font-size: 18px;
+    color: #aaa;
+    margin: 0;
+    overflow: hidden;
+}

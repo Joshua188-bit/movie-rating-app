@@ -89,7 +89,12 @@ async function getMovieDetails(id) {
         const response = await fetch('http://localhost:3000/watchlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ movieId: id })
+          body: JSON.stringify({
+            movieId: id,
+            movie_name: title,
+            movie_description: overview,
+            poster_path: poster_path
+          })
         });
 
         if (!response.ok) {
