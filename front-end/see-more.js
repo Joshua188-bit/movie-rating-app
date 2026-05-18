@@ -67,14 +67,10 @@ async function getMovieDetails(id) {
                   <p class="detail-label">Revenue</p>
                   <p class="detail-value">$${revenue.toLocaleString()}</p>
                 </div>
-                <div class="saving-buttons">
-                  <button class="Save-btn">
-                    Add To Watchlist
-                  </button>
-                  <button class="favourites-btn">
-                  Favourite
-                  </button>
-                </div>
+              </div>
+              <div class="saving-buttons">
+                <button class="Save-btn">Add To Watchlist</button>
+                <button class="favourites-btn">Favourite</button>
               </div>
             </div>
           </div>
