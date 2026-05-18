@@ -25,11 +25,11 @@ async function getMovieDetails(id) {
     const language = data.spoken_languages.map(spoken_languages => `
             <p>${spoken_languages.name}</p>
         `).join('');
-    const { title, overview, poster_path, vote_average, runtime, release_date, original_language, revenue, budget, status, } = data;
+    const { title, overview, poster_path, vote_average, runtime, release_date, revenue, budget, status, } = data;
     seeMoreBtn.innerHTML = `
       <div class="movie-details">
         <div class="movie-items">
-          <img class="detail-poster" src="https://image.tmdb.org/t/p/w500${poster_path}">
+          <img class="detail-poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="movie poster">
           <div class="movie-description">
             <div class="genres">${genres}</div>
             <h1>${title}</h1>
@@ -68,10 +68,10 @@ async function getMovieDetails(id) {
                   <p class="detail-value">$${revenue.toLocaleString()}</p>
                 </div>
                 <div class="saving-buttons">
-                  <button class="Save-btn" onclick="window.location.href='/front-end/pages/watch-list.html'">
+                  <button class="Save-btn">
                     Add To Watchlist
                   </button>
-                  <button class="favourites-btn" onclick="window.location.href='/front-end/pages/Favourites.html'">
+                  <button class="favourites-btn">
                   Favourite
                   </button>
                 </div>
@@ -97,6 +97,8 @@ async function getMovieDetails(id) {
         }
 
         const data = await response.json();
+        saveBtn.textContent = 'Added to Watchlist!';
+        saveBtn.disabled = true;
       }
       catch (error) {
         console.error(error);
