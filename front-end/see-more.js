@@ -106,6 +106,32 @@ async function getMovieDetails(id) {
       }
     })
 
+    const favBtn = document.querySelector('.favourites-btn');
+
+    favBtn.addEventListener('click', async () => {
+      try {
+        const response = await fetch('http://localhost:3000/favourites', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            movieId: id,
+            movie_name: title,
+            poster_path: poster_path
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        favBtn.textContent = 'Added to Favourites!';
+        favBtn.disabled = true;
+
+      } catch (error) {
+        console.error(error);
+      }
+    })
+
 
   } catch (error) {
     console.error(error);
