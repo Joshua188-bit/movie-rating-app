@@ -13,7 +13,7 @@ header {
   padding: 1rem 3rem;
 }
 
-header h1 a{
+header h1 a {
   font-family: "Roboto Condensed", sans-serif;
   color: #fff;
   font-weight: 800;
@@ -181,7 +181,7 @@ header span {
 .movie-description {
   display: flex;
   flex-direction: column;
-  margin-top:4rem;
+  margin-top: 4rem;
   margin-left: 2rem;
 }
 
@@ -199,9 +199,9 @@ header span {
 }
 
 .badge {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
   padding: 4px 12px;
   border-radius: 20px;
@@ -213,11 +213,12 @@ header span {
 }
 
 .details-part {
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding-top: 16px;
   margin-top: 1rem;
-  
+
 }
+
 .details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -227,7 +228,7 @@ header span {
 
 .detail-label {
   font-size: 18px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 4px;
 }
 
@@ -243,8 +244,8 @@ header span {
 }
 
 .stat-box {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 12px 16px;
   text-align: center;
@@ -253,7 +254,7 @@ header span {
 
 .stat-label {
   font-size: 11px;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
   margin-bottom: 4px;
 }
 
@@ -274,86 +275,90 @@ header span {
 }
 
 .watchlist-result {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
 }
 
 .movieoverview-card {
-    display: flex;
-    gap: 16px;
-    background-color: #1a1a1a;
-    border-radius: 12px;
-    padding: 12px 16px;
-     align-items: flex-start;
+  display: flex;
+  gap: 16px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 12px 16px;
+  align-items: flex-start;
 }
 
 .movieoverview-card img {
-    width: 120px;
-    height: 200px;
-    border-radius: 6px;
+  width: 120px;
+  height: 200px;
+  border-radius: 6px;
 }
 
 
 .movie-description p:first-child {
-    font-size: 30px;
-    font-weight: 500;
-    color: white;
-    font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
-.desc-movie{
+.desc-movie {
   font-weight: 500;
   font-size: 0.9rem;
   margin-top: 0.5rem;
-  color:azure;
+  color: azure;
   font-family: "Roboto Condensed", sans-serif;
 }
 
 .saving-buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.Save-btn, .favourites-btn {
-    padding: 10px 20px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.Save-btn {
-    background-color: white;
-    color: black;
-}
-
-.Save-btn:hover {
-    background-color: #ddd;
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .favourites-btn {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Save-btn {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Save-btn:hover {
+  background-color: #ddd;
+}
+
+.favourites-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
 }
 
 .favourites-btn:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
 .detail-poster {
-    width: 300px;
-    height: 450px;
-    object-fit: cover;
-    border-radius: 8px;
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.dlt-button{
+.dlt-button {
   font-size: 700;
   font-size: 1.2rem;
   width: 10rem;
@@ -371,5 +376,5 @@ header span {
 }
 
 .movie-description {
-    flex: 1; 
+  flex: 1;
 }
