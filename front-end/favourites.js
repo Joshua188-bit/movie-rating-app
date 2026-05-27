@@ -1,4 +1,4 @@
-const favourites = document.querySelector('.favs-movies');
+let favourites = document.querySelector('.favs-movies');
 
 async function getFavourites() {
     try {
@@ -15,17 +15,34 @@ async function getFavourites() {
             return;
         }
 
-        favourites.innerHTML = movies.map(movie => `
+        favourites.innerHTML = movies.map(movie =>
+            `
         <div class="fav-column">
             <div class="movie-column">
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.movie_name}">
                 <div class="fav-hover-card">
                     <p>${movie.movie_name}</p>
-                    <button>Delete</button>
+                    <button class="delete-button" data-id="${movie.movie_id}">Delete</button>
                 </div>
             </div>
         </div>
-    `).join('');
+    `
+        ).join('');
+
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', async () => {
+                const id = button.dataset.id;
+                try {
+                    const response = await fetch(`http://localhost:3000/favourites/${id}`, {
+                        method: 'DELETE',
+                    });
+                    if (!response.ok) throw new Error(`Error: ${response.status}`);
+                    getFavourites()
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+        });
 
     } catch (error) {
         console.error(error);

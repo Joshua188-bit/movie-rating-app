@@ -410,13 +410,11 @@ header span {
 .fav-hover-card p {
   color: #fff;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 

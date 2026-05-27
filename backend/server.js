@@ -59,14 +59,26 @@ app.post('/favourites', async (req, res) => {
 })
 
 app.get('/favourites', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM FavouriteMovies');
-    res.status(200).json(result.rows);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json('Database Error');
-  }
+    try {
+        const result = await pool.query('SELECT * FROM FavouriteMovies');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json('Database Error');
+    }
 });
+
+app.delete('/favourites/:id', async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        const result = await pool.query('DELETE FROM favouritemovies WHERE movie_id = $1',[id]);
+        res.status(200).json({ message: 'Movie deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json('Database Error');
+    }
+})
 
 app.listen(3000, () => {
     console.log("Server running and working");
