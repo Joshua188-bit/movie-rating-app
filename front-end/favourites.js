@@ -19,10 +19,11 @@ async function getFavourites() {
         <div class="fav-column">
             <div class="movie-column">
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.movie_name}">
-                <div class="movie-description">
+                <div class="fav-hover-card">
                     <p>${movie.movie_name}</p>
+                    <button>Delete</button>
                 </div>
-        < /div>
+            </div>
         </div>
     `).join('');
 
