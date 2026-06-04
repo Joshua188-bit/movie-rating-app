@@ -330,6 +330,7 @@ header span {
 }
 
 .favourites-btn {
+  font-family: "Roboto Condensed", sans-serif;
   padding: 10px 20px;
   border-radius: 6px;
   border: none;
@@ -338,9 +339,25 @@ header span {
   font-weight: 500;
 }
 
+.rate-btn {
+  font-family: "Roboto Condensed", sans-serif;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: white;
+}
+
+.rate-btn:hover {
+  background-color: #ddd;
+}
+
 .Save-btn {
+  font-family: "Roboto", sans-serif;
   background-color: white;
   color: black;
+  cursor: pointer;
   padding: 10px 20px;
   border-radius: 6px;
   font-size: 14px;
@@ -461,3 +478,4 @@ header span {
   background-color: red;
   color: white;
 }
+

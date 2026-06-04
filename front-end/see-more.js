@@ -71,6 +71,7 @@ async function getMovieDetails(id) {
               <div class="saving-buttons">
                 <button class="Save-btn">Add To Watchlist</button>
                 <button class="favourites-btn">Favourite</button>
+                <button class="rate-btn">Rate the movie</button>
               </div>
             </div>
           </div>
@@ -79,6 +80,7 @@ async function getMovieDetails(id) {
     `;
 
     const saveBtn = document.querySelector(".Save-btn");
+    
 
     saveBtn.addEventListener('click', async () => {
       try {
@@ -130,6 +132,11 @@ async function getMovieDetails(id) {
       } catch (error) {
         console.error(error);
       }
+    })
+
+    const rateBtn = document.querySelector(".rate-btn");
+    rateBtn.addEventListener('click', () => {
+      window.location.href = 'http://localhost:5175/front-end/pages/rating-page';
     })
 
 

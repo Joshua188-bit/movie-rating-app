@@ -20,7 +20,7 @@ async function loadPopularMovies() {
 
     const data = await response.json();
 
-    data.results.forEach(movie => {
+    data.results.map(movie => {
       const { title, poster_path, vote_average, overview, release_date } = movie;
       const card = document.createElement('div');
       card.className = 'movie-card';
