@@ -1,3 +1,4 @@
+import { API_URL, API_KEY } from "../src/config";
 let currentPage = 1;
 window.addEventListener("DOMContentLoaded", loadPopularMovies);
 

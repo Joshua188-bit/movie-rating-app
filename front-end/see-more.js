@@ -1,3 +1,5 @@
+import { API_URL, API_KEY } from '/src/config.js';
+
 const seeMoreBtn = document.getElementById('see-more');
 
 function formatDate(dateString) {
@@ -136,7 +138,7 @@ async function getMovieDetails(id) {
 
     const rateBtn = document.querySelector(".rate-btn");
     rateBtn.addEventListener('click', () => {
-      window.location.href = 'http://localhost:5175/front-end/pages/rating-page';
+      window.location.href = `http://localhost:5173/front-end/pages/rating-page.html?id=${id}`;
     })
 
 

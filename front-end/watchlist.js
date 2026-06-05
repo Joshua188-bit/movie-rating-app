@@ -1,3 +1,5 @@
+import { API_URL, API_KEY } from '/src/config.js';
+
 const watchList = document.querySelector(".watchlist-result");
 
 

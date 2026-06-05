@@ -1,3 +1,5 @@
+import { API_URL, API_KEY } from '/src/config.js';
+
 let favourites = document.querySelector('.favs-movies');
 
 async function getFavourites() {
