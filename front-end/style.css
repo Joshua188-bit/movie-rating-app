@@ -479,3 +479,65 @@ header span {
   color: white;
 }
 
+.rating-page {
+  display: flex;
+  gap: 32px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 0.5rem;
+}
+
+.rating-page img {
+  width: 320px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.rating-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.rating-form h2 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.rating-form label {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.rating-form input,
+.rating-form textarea {
+  background-color: #2a2a2a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 15px;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+}
+
+
+.submit-rating {
+  margin-top: 20px;
+  padding: 14px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit-rating:hover {
+  background-color: #f6121d;
+}

@@ -12,15 +12,19 @@ async function loadMovie() {
 
     const { poster_path, title } = data;
     formPage.innerHTML = `
-    <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}">
-    <form action="/submit" method="post">
-      <label for="Rate">Rate:
-        <input type="text" id="Rate" name="Rate" placeholder="Rate the movie">
-      </label>
-      <label for="Desc">Description:
-        <input type="text" id="Desc" name="Desc" placeholder="How was the movie?">
-      </label>
-    </form>
+    <div class = "rating-page">
+        <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}">
+        <form action="/submit" method="post" class="rating-form">
+        <h2>${title}</h2>
+        <label for="Rate">Your Rating</label>
+        <input type="number" id="Rate" name="Rate" min="1" max="10" placeholder="example 8.5">
+        
+        <label for="Desc">Your Review</label>
+        <textarea id="Desc" name="Desc" rows="6" placeholder="What did you think?"></textarea>
+
+        <button type="submit" class="submit-rating">Submit Rating</button>
+        </form>
+    </div>
   `;
 }
 loadMovie();
