@@ -80,14 +80,26 @@ app.delete('/favourites/:id', async (req, res) => {
     }
 })
 
-app.post('/submit/:id', async () => {
+app.post('/ratings', async (req, res) => {
     try {
+        const { movieId, movie_name, poster_path, rating, review } = req.body;
+
+        const result = await pool.query(
+            `INSERT INTO Rating (movie_id, movie_name, poster_path, rate, Rating_Description)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *`,
+            [movieId, movie_name, poster_path, rating, review]
+        );
+
+        res.status(201).json(result.rows[0]);
 
     } catch (error) {
         console.error(error);
         res.status(500).json('Database Error');
     }
 })
+
+
 app.listen(3000, () => {
     console.log("Server running and working");
 });

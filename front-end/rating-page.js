@@ -26,5 +26,39 @@ async function loadMovie() {
         </form>
     </div>
   `;
+
+    const form = formPage.querySelector('.rating-form');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const rating = document.getElementById('Rate').value;
+        const review = document.getElementById('Desc').value;
+
+        try {
+            const response = await fetch('http://localhost:3000/ratings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    movieId: movieId,
+                    movie_name: title,
+                    poster_path: poster_path,
+                    rating: rating,
+                    review: review
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const btn = form.querySelector('.submit-rating');
+            btn.textContent = 'Rating Saved!';
+            btn.disabled = true;
+        } catch (error) {
+            console.error(error);
+        }
+    });
 }
 loadMovie();
