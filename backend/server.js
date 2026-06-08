@@ -99,6 +99,15 @@ app.post('/ratings', async (req, res) => {
     }
 })
 
+app.get('/ratings', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM Rating Order by id DESC');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json('Database Error');
+    }
+})
 
 app.listen(3000, () => {
     console.log("Server running and working");
