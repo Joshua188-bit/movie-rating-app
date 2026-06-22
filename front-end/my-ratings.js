@@ -11,6 +11,7 @@ const ratingResults = async () => {
         <div class="rating-info">
           <h3>${r.movie_name}</h3>
           <p class="rating-score">${r.rate}/10</p>
+          <p class="desc">Description:</p>
           <p class="rating-review">${r.rating_description}</p>
         </div>
       </div>
