@@ -13,10 +13,26 @@ const ratingResults = async () => {
           <p class="rating-score">${r.rate}/10</p>
           <p class="desc">Description:</p>
           <p class="rating-review">${r.rating_description}</p>
+              <button class="dlt-button" data-id="${r.id}">Delete</button>
         </div>
       </div>
     `).join('');
-    
+
+          
+    document.querySelectorAll('.dlt-button').forEach(button => {
+            button.addEventListener('click', async () => {
+                const id = button.dataset.id;
+                try {
+                    const response = await fetch(`http://localhost:3000/ratings/${id}`, {
+                        method: 'DELETE',
+                    });
+                    if (!response.ok) throw new Error(`Error: ${response.status}`);
+                    ratingResults();
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+        });
 
     } catch (error) {
         console.log(error);

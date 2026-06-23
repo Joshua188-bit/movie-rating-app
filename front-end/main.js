@@ -52,3 +52,5 @@ function loadMore() {
   loadPopularMovies();
 }
 
+const loadMoreBtn = document.getElementById("load-more");
+loadMoreBtn.addEventListener("click", loadMore);
