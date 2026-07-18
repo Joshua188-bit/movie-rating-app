@@ -113,8 +113,12 @@ async function showSearchResults() {
   if (query === "") return;
 
   heroSection.style.display = "none";
-  searchResults.innerHTML = `<h2>Results for "${query}"</h2>`;
+  searchResults.innerHTML = `
+    <h2>Results for "${query}"</h2>
+    <div id="search-movies"></div>
+  `;
 
+  const grid = document.getElementById('search-movies');
   try {
     const results = await fetchSearchResults(query);
 
@@ -136,7 +140,7 @@ async function showSearchResults() {
         localStorage.setItem('selectedMovieId', movie.id);
         window.location.href = '/front-end/pages/see-more.html';
       });
-      searchResults.appendChild(card);
+      grid.appendChild(card);
     });
   } catch (error) {
     console.error(error);
