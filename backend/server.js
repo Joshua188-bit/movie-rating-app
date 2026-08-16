@@ -4,6 +4,7 @@ import pool from './db.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import validator from 'validator';
 
 const app = express();
 app.use(cors());
@@ -130,12 +131,29 @@ app.post('/signup', async (req, res) => {
     try {
         const { email, password } = req.body;
 
+
+        if (!email || !password) {
+            return res.status(400).json({ error: 'Email and password are required' });
+        }
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
+        }
+        if (password.length < 8) {
+            return res.status(400).json({ error: 'Password must be at least 8 characters long' });
+        }
+
+        const userExists = await pool.query('SELECT user_id FROM Users WHERE user_email = $1', [email]);
+        if (userExists.rows.length > 0) {
+            return res.status(409).json({ error: 'Email is already registered' });
+        }
+
         const password_hash = await bcrypt.hash(password, 10);
 
         const result = await pool.query(
             'INSERT INTO Users (user_email, password_Hash) VALUES ($1, $2) RETURNING user_id, user_email',
             [email, password_hash]
         );
+
 
         const newUser = result.rows[0];
 
