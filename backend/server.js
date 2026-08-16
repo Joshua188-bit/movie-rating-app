@@ -1,10 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import pool from './db.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+dotenv.config();
+
 
 app.post('/watchlist', async (req, res) => {
     const { movieId, movie_name, movie_description, poster_path } = req.body;
@@ -120,6 +125,44 @@ app.delete('/ratings/:id', async (req, res) => {
         res.status(500).json('Database Error');
     }
 })
+
+app.post('/signup', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        const password_hash = await bcrypt.hash(password, 10);
+
+        const result = await pool.query(
+            'INSERT INTO Users (user_email, password_Hash) VALUES ($1, $2) RETURNING user_id, user_email',
+            [email, password_hash]
+        );
+
+        const newUser = result.rows[0];
+
+        const accessToken = jwt.sign(
+            { userId: newUser.user_id },
+            process.env.JWT_SECRET,
+            { expiresIn: '15m' }
+        );
+
+        const refreshToken = jwt.sign(
+            { userId: newUser.user_id },
+            process.env.REFRESH_SECRET,
+            { expiresIn: '30d' }
+        );
+
+        await pool.query(
+            'INSERT INTO Refresh_Tokens (user_id, token) VALUES ($1, $2)',
+            [newUser.user_id, refreshToken]
+        );
+
+        res.status(201).json({ accessToken, refreshToken, user: newUser });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json('Database Error');
+    }
+});
 
 app.listen(3000, () => {
     console.log("Server running and working");
