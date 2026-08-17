@@ -186,14 +186,39 @@ app.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const result = await pool.query ('SELECT * FROM Users WHERE user_email = $1', [email]);
+        if (!email || !password) {
+            return res.status(400).json({ error: 'Email and password are required' });
+        }
+
+        const result = await pool.query('SELECT * FROM Users WHERE user_email = $1', [email]);
         if (result.rows.length === 0) {
-            return res.status(401).json({error: 'Invalid email or password'});
+            return res.status(401).json({ error: 'Invalid email or password' });
         }
 
         const user = result.rows[0];
 
+        const isMatch = await bcrypt.compare(password, user.password_Hash);
+        if (!isMatch) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
 
+        const accessToken = jwt.sign(
+            { userId: user.user_id },
+            process.env.JWT_SECRET,
+            { expiresIn: '15m' }
+        );
+
+        const refreshToken = jwt.sign(
+            { userId: user.user_id },
+            process.env.REFRESH_SECRET,
+            { expiresIn: '30d' }
+        );
+
+        await pool.query(
+            'INSERT INTO Refresh_Tokens (user_id, token) VALUES ($1, $2)',
+            [user.user_id, refreshToken]
+        );
+        res.status(200).json({ accessToken, refreshToken });
 
     } catch (error) {
         console.error(error);
