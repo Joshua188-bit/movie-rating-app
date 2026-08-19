@@ -197,7 +197,7 @@ app.post('/login', async (req, res) => {
 
         const user = result.rows[0];
 
-        const isMatch = await bcrypt.compare(password, user.password_Hash);
+        const isMatch = await bcrypt.compare(password, user.password_hash);
         if (!isMatch) {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
@@ -225,9 +225,27 @@ app.post('/login', async (req, res) => {
         res.status(500).json('Database Error');
     }
 
-
-
 })
+
+export function requireAuth(req, res, next) {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        return res.status(401).json({ error: 'Sorry not Authorized' });
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    try {
+        const tokenData = jwt.verify(token, process.env.JWT_SECRET);
+        req.userId = tokenData.userId;
+        next();
+    } catch (error) {
+        return res.status(401).json({ error: 'Invalid or expired token' });
+    }
+}
+
+
 
 app.listen(3000, () => {
     console.log("Server running and working");
