@@ -12,15 +12,15 @@ app.use(express.json());
 dotenv.config();
 
 
-app.post('/watchlist', async (req, res) => {
+app.post('/watchlist', requireAuth, async (req, res) => {
     const { movieId, movie_name, movie_description, poster_path } = req.body;
     console.log('Movie to save:', movieId);
 
 
     try {
         const result = await pool.query(
-            'INSERT Into Watchlist (Movie_Id, Movie_name, Movie_description, poster_path) Values ($1, $2, $3, $4) Returning *',
-            [movieId, movie_name, movie_description, poster_path]
+            'INSERT Into Watchlist (Movie_Id, Movie_name, Movie_description, poster_path, user_id) Values ($1, $2, $3, $4, $5) Returning *',
+            [movieId, movie_name, movie_description, poster_path, req.userId]
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
@@ -28,9 +28,9 @@ app.post('/watchlist', async (req, res) => {
         res.status(500).json('Database Error');
     }
 })
-app.get('/watchlist', async (req, res) => {
+app.get('/watchlist', requireAuth, async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM watchlist');
+        const result = await pool.query('SELECT * FROM watchlist WHERE user_id = $1', [req.userId]);
         res.status(200).json(result.rows);
     } catch (error) {
         console.error(error);
@@ -38,13 +38,17 @@ app.get('/watchlist', async (req, res) => {
     }
 })
 
-app.delete('/watchlist/:id', async (req, res) => {
+app.delete('/watchlist/:id', requireAuth, async (req, res) => {
     try {
         const { id } = req.params;
 
-        const result = await pool.query('DELETE FROM Watchlist WHERE Movie_Id = $1',
-            [id]
-        )
+        const result = await pool.query('DELETE FROM Watchlist WHERE Movie_Id = $1 AND user_id = $2 RETURNING *',
+            [id, req.userId]
+        );
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Item not found or not yours' });
+        }
+
         res.status(200).json({ message: 'Movie deleted successfully' });
     } catch (error) {
         console.error(error);
@@ -52,11 +56,11 @@ app.delete('/watchlist/:id', async (req, res) => {
     }
 })
 
-app.post('/favourites', async (req, res) => {
+app.post('/favourites', requireAuth, async (req, res) => {
     try {
         const { movieId, movie_name, poster_path } = req.body;
 
-        const result = await pool.query('INSERT INTO FavouriteMovies (Movie_Id, Movie_name, poster_path) Values ($1, $2, $3) Returning *', [movieId, movie_name, poster_path])
+        const result = await pool.query('INSERT INTO FavouriteMovies (Movie_Id, Movie_name, poster_path, user_id) Values ($1, $2, $3, $4) Returning *', [movieId, movie_name, poster_path, req.userId])
         res.status(201).json(result.rows[0]);
     } catch (error) {
         console.error(error);
@@ -64,9 +68,9 @@ app.post('/favourites', async (req, res) => {
     }
 })
 
-app.get('/favourites', async (req, res) => {
+app.get('/favourites', requireAuth, async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM FavouriteMovies');
+        const result = await pool.query('SELECT * FROM FavouriteMovies WHERE user_id = $1', [req.userId]);
         res.status(200).json(result.rows);
     } catch (error) {
         console.error(error);
@@ -74,11 +78,15 @@ app.get('/favourites', async (req, res) => {
     }
 });
 
-app.delete('/favourites/:id', async (req, res) => {
+app.delete('/favourites/:id', requireAuth, async (req, res) => {
     try {
         const { id } = req.params;
 
-        const result = await pool.query('DELETE FROM favouritemovies WHERE movie_id = $1', [id]);
+        const result = await pool.query('DELETE FROM favouritemovies WHERE movie_id = $1 AND user_id = $2 Returning *', [id, req.userId]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Item not found' });
+        }
+
         res.status(200).json({ message: 'Movie deleted successfully' });
     } catch (error) {
         console.error(error);
@@ -86,15 +94,15 @@ app.delete('/favourites/:id', async (req, res) => {
     }
 })
 
-app.post('/ratings', async (req, res) => {
+app.post('/ratings', requireAuth, async (req, res) => {
     try {
         const { movieId, movie_name, poster_path, rating, review } = req.body;
 
         const result = await pool.query(
-            `INSERT INTO Rating (movie_id, movie_name, poster_path, rate, Rating_Description)
-       VALUES ($1, $2, $3, $4, $5)
+            `INSERT INTO Rating (movie_id, movie_name, poster_path, rate, Rating_Description, user_id)
+       VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
-            [movieId, movie_name, poster_path, rating, review]
+            [movieId, movie_name, poster_path, rating, review, req.userId]
         );
 
         res.status(201).json(result.rows[0]);
@@ -105,9 +113,9 @@ app.post('/ratings', async (req, res) => {
     }
 })
 
-app.get('/ratings', async (req, res) => {
+app.get('/ratings', requireAuth, async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM Rating Order by id DESC');
+        const result = await pool.query('SELECT * FROM Rating WHERE user_id = $1 Order by id DESC', [req.userId]);
         res.status(200).json(result.rows);
     } catch (error) {
         console.error(error);
@@ -115,11 +123,15 @@ app.get('/ratings', async (req, res) => {
     }
 })
 
-app.delete('/ratings/:id', async (req, res) => {
+app.delete('/ratings/:id', requireAuth, async (req, res) => {
     try {
         const { id } = req.params;
 
-        const result = await pool.query('DELETE FROM Rating WHERE id = $1', [id]);
+        const result = await pool.query('DELETE FROM Rating WHERE id = $1 AND user_id = $2 Returning *', [id, req.userId]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Item not found' });
+        }
+
         res.status(200).json({ message: 'Movie deleted successfully' });
     } catch (error) {
         console.error(error);
