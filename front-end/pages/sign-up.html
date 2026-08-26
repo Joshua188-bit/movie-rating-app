@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sign up | CineTrack</title>
 
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,14 +17,112 @@
     <link rel="stylesheet" href="/front-end/reset.css">
     <link rel="stylesheet" href="/front-end/style.css">
     <!--Link js-->
-    <script type="module" defer src="/front-end/main.js"></script>
+    <script type="module" defer src="/front-end/auth.js"></script>
 </head>
 
-<body>
-    
-    <header>
-        <h1><a href="/index.html">Cine<span>Track</span></a></h1>
-    </header>
+<body class="auth-page">
+
+    <div class="auth-left">
+
+        <h1 class="logo"><a href="/index.html">Cine<span>Track</span></a></h1>
+
+        <div class="left-content">
+            <p class="eyebrow">Join CineTrack</p>
+            <h2 class="headline">Start your<br>movie <span>journey.</span></h2>
+            <p class="tagline">Create an account and build your personalized movie collection.</p>
+
+            <ul class="features">
+                <li>
+                    <img src="/front-end/img/bookmark.png" alt="">
+                    <div>
+                        <h3>Your Watchlist</h3>
+                        <p>Keep track of what you want to watch.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/front-end/img/star.png" alt="">
+                    <div>
+                        <h3>Rate &amp; Review</h3>
+                        <p>Share your thoughts and see what others think.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/front-end/img/like.png" alt="">
+                    <div>
+                        <h3>Your Favorites</h3>
+                        <p>Save your all-time favorite movies.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <blockquote class="quote">
+            <span class="quote-mark">&ldquo;</span>
+            <p>The best stories live on forever on the big screen.</p>
+            <cite>&ndash; Unknown</cite>
+        </blockquote>
+
+    </div>
+
+    <div class="auth-right">
+        <div class="form-box">
+
+            <span class="box-icon">
+                <img src="/front-end/img/clapperboard.png" alt="">
+            </span>
+
+            <h2 class="box-title">Create <span>your account</span></h2>
+            <p class="box-sub">Join CineTrack and start tracking movies</p>
+
+            <form id="signup-form" novalidate>
+
+                <label for="full-name">Full name</label>
+                <div class="field">
+                    <img class="field-icon" src="/front-end/img/user.png" alt="">
+                    <input type="text" id="full-name" name="fullName" placeholder="Travis Scott" autocomplete="name">
+                </div>
+
+                <label for="email">Email</label>
+                <div class="field">
+                    <img class="field-icon" src="/front-end/img/email.png" alt="">
+                    <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
+                </div>
+
+                <label for="password">Password</label>
+                <div class="field">
+                    <img class="field-icon" src="/front-end/img/padlock.png" alt="">
+                    <input type="password" id="password" name="password" placeholder="Create a password"
+                        autocomplete="new-password" minlength="8">
+                    <button type="button" class="show-password" data-target="password" aria-label="Show password">
+                        <img src="/front-end/images/eye.png" alt="">
+                    </button>
+                </div>
+                <p class="hint">Must be at least 8 characters</p>
+
+                <label for="confirm-password">Confirm password</label>
+                <div class="field">
+                    <img class="field-icon" src="/front-end/img/padlock.png" alt="">
+                    <input type="password" id="confirm-password" name="confirmPassword"
+                        placeholder="Confirm your password" autocomplete="new-password" minlength="8">
+                    <button type="button" class="show-password" data-target="confirm-password"
+                        aria-label="Show password">
+                        <img src="/front-end/img/eye.png" alt="">
+                    </button>
+                </div>
+
+                <p class="error-msg" id="signup-error" role="alert" hidden></p>
+
+                <button type="submit" class="submit-btn">
+                    Sign up
+                    <img src="/front-end/images/arrow-right.png" alt="">
+                </button>
+
+            </form>
+
+            <p class="switch-page">Already have an account? <a href="/front-end/pages/sign-in.html">Log in</a></p>
+
+        </div>
+    </div>
 
 </body>
 
