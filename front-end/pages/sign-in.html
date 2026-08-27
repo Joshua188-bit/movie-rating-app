@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
+    <title>Sign in | CineTrack</title>
+
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!--link css-->
+    <link rel="stylesheet" href="/front-end/reset.css">
+    <link rel="stylesheet" href="/front-end/style.css">
+    <!--Link js-->
+    <script type="module" defer src="/front-end/login.js"></script>
 </head>
-<body>
-    
+
+<body class="auth-page">
+
+    <div class="auth-left">
+
+        <h1 class="logo"><a href="/index.html">Cine<span>Track</span></a></h1>
+
+        <div class="left-content">
+            <p class="eyebrow">Welcome back</p>
+            <h2 class="headline">Good to see<br>you <span>again.</span></h2>
+            <p class="tagline">Log in to continue tracking, rating and discovering amazing movies.</p>
+
+            <ul class="features">
+                <li>
+                    <img src="/front-end/img/bookmark.png" alt="">
+                    <div>
+                        <h3>Your Watchlist</h3>
+                        <p>Keep track of what you want to watch.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/front-end/img/star.png" alt="">
+                    <div>
+                        <h3>Rate &amp; Review</h3>
+                        <p>Share your thoughts and see what others think.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/front-end/img/like.png" alt="">
+                    <div>
+                        <h3>Your Favorites</h3>
+                        <p>Save your all-time favorite movies.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <blockquote class="quote">
+            <span class="quote-mark">&ldquo;</span>
+            <p>Movies are the shortest distance between two people.</p>
+            <cite>&ndash; Irving Brecher</cite>
+        </blockquote>
+
+    </div>
+
+    <div class="auth-right">
+        <div class="form-box">
+
+            <span class="box-icon">
+                <img src="/front-end/img/clapperboard.png" alt="">
+            </span>
+
+            <h2 class="box-title">Log in to <span>CineTrack</span></h2>
+            <p class="box-sub">Enter your details to access your account</p>
+
+            <form id="login-form" novalidate>
+
+                <label for="email">Email</label>
+                <div class="field">
+                    <img class="field-icon" src="/front-end/img/email.png" alt="">
+                    <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
+                </div>
+
+                <label for="password">Password</label>
+                <div class="field">
+                    <img class="field-icon" src="/front-end/img/padlock.png" alt="">
+                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                        autocomplete="current-password">
+                    <button type="button" class="show-password" data-target="password" aria-label="Show password">
+                        <img src="/front-end/img/eye.png" alt="">
+                    </button>
+                </div>
+
+                <a class="forgot" href="/front-end/pages/forgot-password.html">Forgot password?</a>
+
+                <label class="remember">
+                    <input type="checkbox" name="remember" checked>
+                    Remember me
+                </label>
+
+                <p class="error-msg" id="login-error" role="alert" hidden></p>
+
+                <button type="submit" class="submit-btn">
+                    Log in
+                    <img src="/front-end/img/right-arrow.png" alt="">
+                </button>
+
+            </form>
+
+            <p class="switch-page">Don't have an account? <a href="/front-end/pages/sign-up.html">Sign up</a></p>
+
+        </div>
+    </div>
+
 </body>
+
 </html>

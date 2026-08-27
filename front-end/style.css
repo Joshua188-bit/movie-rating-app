@@ -970,3 +970,36 @@ header span {
 .switch-page a:hover {
   text-decoration: underline;
 }
+
+.forgot {
+  display: block;
+  margin: -0.6rem 0 1rem;
+  text-align: right;
+  font-size: 0.78rem;
+  color: #e50914;
+  text-decoration: none;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.3rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.remember input {
+  width: 16px;
+  height: 16px;
+  accent-color: #e50914;
+  cursor: pointer;
+}
